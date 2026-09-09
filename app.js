@@ -10,10 +10,7 @@ const app = express();
 
 app.use(express.json());
 
-// Gift routes
 app.use(giftRoutes);
-
-// Search routes
 app.use(searchRoutes);
 
 async function startServer() {
