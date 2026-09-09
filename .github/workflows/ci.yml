@@ -1,0 +1,59 @@
+name: GiftLink CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install backend dependencies
+        run: npm install
+
+      - name: Check backend files
+        run: |
+          node --check app.js
+          node --check backend/config/db.js
+          node --check backend/routes/giftRoutes.js
+          node --check backend/routes/searchRoutes.js
+          node --check backend/routes/authRoutes.js
+
+      - name: Install sentiment dependencies
+        run: |
+          cd sentiment
+          npm install
+
+      - name: Check sentiment module
+        run: |
+          cd sentiment
+          node --check index.js
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm install
+
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run build
+
+      - name: Build Docker image
+        run: docker build -t giftlink .
+
+      - name: CI/CD completed successfully
+        run: echo "GiftLink CI/CD process completed successfully"
