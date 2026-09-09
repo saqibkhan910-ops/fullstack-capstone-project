@@ -1,0 +1,26 @@
+{
+  "name": "fullstack-capstone-project",
+  "version": "1.0.0",
+  "description": "GiftLink Full Stack Capstone Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saqibkhan910-ops/fullstack-capstone-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/saqibkhan910-ops/fullstack-capstone-project/issues"
+  },
+  "homepage": "https://github.com/saqibkhan910-ops/fullstack-capstone-project#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongodb": "^7.6.0"
+  }
+}
