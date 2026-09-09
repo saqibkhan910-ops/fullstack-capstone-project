@@ -2,13 +2,19 @@ require("dotenv").config();
 
 const express = require("express");
 const { connectToDatabase } = require("./backend/config/db");
+
 const giftRoutes = require("./backend/routes/giftRoutes");
+const searchRoutes = require("./backend/routes/searchRoutes");
 
 const app = express();
 
 app.use(express.json());
 
+// Gift routes
 app.use(giftRoutes);
+
+// Search routes
+app.use(searchRoutes);
 
 async function startServer() {
   try {
